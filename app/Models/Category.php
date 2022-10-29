@@ -10,4 +10,20 @@ class Category extends Model
     use HasFactory;
 
     protected $table = ['categories'];
+    
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'is_income',
+        'created_by',
+        'default',
+    ];
+
+    public static function getUserCategory($id) {
+        return self::where(['created_by' => $id])->orWhere(['default' => true])->get();
+    }
 }

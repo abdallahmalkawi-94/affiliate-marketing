@@ -17,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $userId = Auth::user()->id;
+        $categories = Category::getUserCategory($userId);
         return response()->json(['status' => true , 'categories' => $categories]);
     }
 
@@ -42,7 +43,11 @@ class CategoryController extends Controller
         try {
             $name = $request->name;
             $is_income = $request->is_income ? true : false;
-            Category::create(['name' => $name , 'is_income' => $is_income]);
+            Category::create(
+                ['name' => $name , 
+                'is_income' => $is_income,
+                'created_by' => Auth::user()->id
+            ]);
 
             return response()->json(['status' => true , 'message' => 'Category created successfully.']);
         } catch (Exception $exception) {
@@ -92,6 +97,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $category->forceDelete();
 
+        return response()->json(['status' => true , 'message' => 'Category deleted successfully.']);
     }
 }

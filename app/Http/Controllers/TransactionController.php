@@ -63,6 +63,7 @@ class TransactionController extends Controller
             $this->userEloquent->update(['id' => $user->id] , ['balance' => $balance]);
             Transaction::create(
                 [
+                    'created_by' => $user->id,
                     'category_id' => $category_id,
                     'amount' => $amount,
                     'notes' => $notes,

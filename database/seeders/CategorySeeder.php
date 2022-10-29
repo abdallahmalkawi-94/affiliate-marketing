@@ -14,15 +14,18 @@ class CategorySeeder extends Seeder
                 'name' => 'Salary',
             ],
             [
-                'is_income' => true
+                'is_income' => true,
+                'default' => true
             ]);
 
         Category::firstOrCreate(
             [
                 'name' => 'Bonuses',
+                'default' => true
             ],
             [
-                'is_income' => true
+                'is_income' => true,
+                'default' => true
             ]);
 
         Category::firstOrCreate(
@@ -30,7 +33,8 @@ class CategorySeeder extends Seeder
                 'name' => 'overtime',
             ],
             [
-                'is_income' => true
+                'is_income' => true,
+                'default' => true
             ]);
 
         Category::firstOrCreate(
@@ -38,7 +42,8 @@ class CategorySeeder extends Seeder
                 'name' => 'Food',
             ],
             [
-                'is_income' => false
+                'is_income' => false,
+                'default' => true
             ]);
 
         Category::firstOrCreate(
@@ -46,7 +51,8 @@ class CategorySeeder extends Seeder
                 'name' => 'Drinks',
             ],
             [
-                'is_income' => false
+                'is_income' => false,
+                'default' => true
             ]);
 
         Category::firstOrCreate(
@@ -54,7 +60,8 @@ class CategorySeeder extends Seeder
                 'name' => 'Shopping',
             ],
             [
-                'is_income' => true
+                'is_income' => true,
+                'default' => true
             ]);
     }
 }

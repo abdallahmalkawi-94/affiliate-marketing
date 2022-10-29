@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('created_by')->references('id')->on('users');
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->decimal('amount');
             $table->string('notes')->nullable();

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('is_income');
+            $table->foreignId('created_by')->nullable()->references('id')->on('users');
+            $table->boolean('default')->default(false);
             $table->timestamps();
         });
     }
